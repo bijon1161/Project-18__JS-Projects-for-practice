@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body{
+            padding : 0px 200px;
+            background-color:brown;
+        }
+        h1{
+            text-align: center;
+            background-color:darkred;
+            padding: 10px;
+            margin: 0;
+            color:white;
+
+        }
+        #textbox{
+            width:99.3%;
+            border-color:darkred;
+            font-size: :15px;
+        }
+        p{
+            background-color:darkred;
+            padding:10px;
+            margin:0px;
+            font-size:25px;
+            font-weight:bold;
+            color:white;
+            text-align: center;
+            position:static;
+            display:block;
+            
+        }
+        #refresh{
+  
+            padding-left: 200px;
+            padding-right: 500px;
+            
+        
+        }
+        #btn{
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Word and Character Counter</h1>
+    <textarea  id="textbox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> words and 
+        <span id="char">0</span> characters
+        
+        <span id="refresh"><button id="btn">Refresh</button></span>
+    </p>
+    <script>
+        var textbox=document.getElementById("textbox");
+        textbox.addEventListener("input",function(){
+            var text = this.value;
+            var char = text.length;
+            document.getElementById("char").innerHTML=char;
+
+            text = text.trim();
+            let words = text.split(" ");
+            let clean = words.filter(function(elm){
+                return elm != "";
+            });
+            document.getElementById("word").innerHTML=clean.length;
+
+            let btn=document.getElementById("btn")
+            btn.addEventListener("click",function(){
+                location.reload();
+            })
+
+        });
+    </script>
+</body>
+</html>
